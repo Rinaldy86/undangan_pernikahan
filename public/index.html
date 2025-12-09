@@ -71,7 +71,10 @@ section{
     linear-gradient(180deg,#fdfaf5,#f7f2e8);
   background-size:120px 120px,cover;
 }
-
+section.dark{
+  background:#111827;
+  color:#fff;
+}
 /* SELANG SELING */
 section:nth-of-type(even){
   background:
@@ -92,6 +95,7 @@ h2{
   background:linear-gradient(180deg,#fff,#faf7f2);
   box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
+.card.dark{background:#1f2937;color:#fff}
 
 /* UCAPAN */
 .ucapan-item{
@@ -156,6 +160,7 @@ footer{
 <div class="hero">
   <h4>THE WEDDING OF</h4>
   <h1>Nama Wanita & Nama Pria</h1>
+  <p id="namaTamu" style="margin-top:10px;font-size:20px;color:var(--gold)"></p>
   <div class="divider"></div>
   <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Anda untuk hadir di hari bahagia kami</p>
   <button class="btn" onclick="document.getElementById('acara').scrollIntoView({behavior:'smooth'})">
@@ -183,6 +188,16 @@ footer{
   <p id="notifUcapan"></p>
   <div id="listUcapan" style="text-align:left;margin-top:30px"></div>
 </div>
+</section>
+
+<section class="dark">
+  <h2>Amplop Digital</h2>
+  <div class="card dark">
+    <p><strong>BCA</strong><br>1234567890<br>a.n Nama</p>
+  </div>
+  <div class="card dark">
+    <p><strong>BCA</strong><br>1234567890<br>a.n Nama</p>
+  </div>
 </section>
 
 <section>
@@ -267,6 +282,19 @@ function kirimUcapan(){
 function openLightbox(el){
   lightboxImg.src=el.src;
   document.getElementById('lightbox').classList.add('active');
+}
+
+function getQueryParam(param){
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+const namaTamuUrl = getQueryParam('nama');
+if(namaTamuUrl){
+  // Tampilkan di hero
+  document.getElementById('namaTamu').textContent = `${decodeURIComponent(namaTamuUrl)}`;
+  // Isi otomatis input ucapan
+  document.getElementById('namaUcapan').value = decodeURIComponent(namaTamuUrl);
 }
 
 loadUcapan();
