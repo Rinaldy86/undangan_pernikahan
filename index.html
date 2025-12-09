@@ -208,6 +208,7 @@ footer{
 </footer>
 
 <script>
+// Ganti URL ini dengan Web App Google Apps Script kamu
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwOXapqDIELTU81Qd7aeFK1Pdkc7kcLvaR5Sp38DSeNGV4WgggdnMKMttiAafLaXOT/exec";
 
 function avatarColor(name){
@@ -237,7 +238,8 @@ function loadUcapan(){
           </div>
         </div>`;
       }).join('');
-    });
+    })
+    .catch(()=>console.log('Gagal load ucapan'));
 }
 
 function kirimUcapan(){
@@ -261,7 +263,6 @@ function kirimUcapan(){
     notifUcapan.style.color="red";
   });
 }
-
 
 function openLightbox(el){
   lightboxImg.src=el.src;
