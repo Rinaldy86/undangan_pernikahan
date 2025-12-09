@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Undangan Pernikahan — Modern Luxury</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#c9a24d;
+  --dark:#0f172a;
+  --soft:#f9f6f1;
+
+  /* BATIK PATTERN */
+  --batik-pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='%23c9a24d' fill-opacity='0.08'%3E%3Cpath d='M60 0c16 20-16 20 0 40s-16 20 0 40-16 20 0 40c16-20 48-20 0-40s16-20 0-40 16-20 0-40z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#0f172a,#1e293b);
+  color:#fff;
+  text-align:center;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  background:
+    linear-gradient(rgba(15,23,42,.7),rgba(15,23,42,.9)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600') center/cover;
+}
+
+.hero h4{letter-spacing:3px;font-weight:400;color:var(--gold)}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:48px;
+  margin:10px 0;
+}
+.hero p{max-width:600px;color:#e5e7eb}
+
+.divider{
+  width:120px;height:1px;background:var(--gold);margin:20px auto
+}
+
+.btn{
+  margin-top:25px;
+  padding:14px 32px;
+  border-radius:40px;
+  background:var(--gold);
+  color:#000;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+}
+
+/* SECTION */
+section{
+  padding:80px 20px;
+  color:#1f2937;
+  background:
+    var(--batik-pattern),
+    linear-gradient(180deg,#fdfaf5,#f7f2e8);
+  background-size:120px 120px,cover;
+}
+
+/* SELANG SELING */
+section:nth-of-type(even){
+  background:
+    var(--batik-pattern),
+    linear-gradient(180deg,#fff,#f4efe4);
+}
+
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+}
+
+.card{
+  max-width:700px;
+  margin:30px auto;
+  padding:30px;
+  border-radius:20px;
+  background:linear-gradient(180deg,#fff,#faf7f2);
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+/* UCAPAN */
+.ucapan-item{
+  display:flex;
+  gap:14px;
+  margin-bottom:20px;
+  padding-bottom:15px;
+  border-bottom:1px solid #e5e7eb;
+}
+.avatar{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:600;flex-shrink:0;
+}
+.ucapan-box p{margin:6px 0 0}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+}
+.gallery img{
+  width:100%;height:160px;object-fit:cover;
+  border-radius:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+.gallery img:hover{
+  transform:scale(1.03);
+  box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.lightbox.active{display:flex}
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+
+/* FOOTER */
+footer{
+  padding:40px 20px;
+  background:#0f172a;
+  color:#9ca3af
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <h4>THE WEDDING OF</h4>
+  <h1>Nama Wanita & Nama Pria</h1>
+  <div class="divider"></div>
+  <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Anda untuk hadir di hari bahagia kami</p>
+  <button class="btn" onclick="document.getElementById('acara').scrollIntoView({behavior:'smooth'})">
+    Buka Undangan
+  </button>
+</div>
+
+<section id="acara">
+  <h2>Save The Date</h2>
+  <p>Sabtu, 18 Januari 2026</p>
+  <div class="card">
+    <h3>Akad Nikah</h3><p>09.00 WIB</p>
+    <h3>Resepsi</h3><p>11.00 WIB - Selesai</p>
+    <p>Gedung Serbaguna Contoh<br>Kota Contoh</p>
+  </div>
+</section>
+
+<section>
+<h2>Ucapan & Doa</h2>
+<p>Tinggalkan doa terbaik Anda</p>
+<div class="card">
+  <input id="namaUcapan" placeholder="Nama" style="width:100%;padding:12px;border-radius:10px;border:1px solid #ddd"><br><br>
+  <textarea id="isiUcapan" rows="4" placeholder="Ucapan / Doa" style="width:100%;padding:12px;border-radius:10px;border:1px solid #ddd"></textarea><br><br>
+  <button class="btn" onclick="kirimUcapan()">Kirim Ucapan</button>
+  <p id="notifUcapan"></p>
+  <div id="listUcapan" style="text-align:left;margin-top:30px"></div>
+</div>
+</section>
+
+<section>
+<h2>Gallery Foto</h2>
+<p>Momen indah kami</p>
+<div class="card">
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?q=80&w=600" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=600" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600" onclick="openLightbox(this)">
+  </div>
+</div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightboxImg">
+</div>
+
+<footer>
+<p>Terima kasih atas doa dan kehadiran Anda</p>
+<p>© 2026 Nama Wanita & Nama Pria</p>
+</footer>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwOXapqDIELTU81Qd7aeFK1Pdkc7kcLvaR5Sp38DSeNGV4WgggdnMKMttiAafLaXOT/exec";
+
+function avatarColor(name){
+  const colors=['#ef4444','#f97316','#eab308','#22c55e','#06b6d4','#3b82f6','#8b5cf6','#ec4899'];
+  let hash=0;
+  for(let c of name) hash=c.charCodeAt(0)+(hash<<5)-hash;
+  return colors[Math.abs(hash)%colors.length];
+}
+
+function loadUcapan(){
+  fetch(SCRIPT_URL)
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById('listUcapan');
+      if(!data.length){
+        list.innerHTML='<p style="text-align:center;color:#6b7280">Belum ada ucapan</p>';
+        return;
+      }
+      list.innerHTML = data.reverse().map(u=>{
+        return `
+        <div class="ucapan-item">
+          <div class="avatar" style="background:${avatarColor(u.nama)}">${u.nama[0].toUpperCase()}</div>
+          <div class="ucapan-box">
+            <strong>${u.nama}</strong><br>
+            <small>${u.waktu}</small>
+            <p>${u.ucapan}</p>
+          </div>
+        </div>`;
+      }).join('');
+    });
+}
+
+function kirimUcapan(){
+  const nama = namaUcapan.value || 'Tamu';
+  const isi = isiUcapan.value.trim();
+  if(!isi) return alert('Isi ucapan dahulu');
+
+  fetch(SCRIPT_URL, {
+    method:'POST',
+    body: JSON.stringify({nama, ucapan: isi})
+  })
+  .then(res => res.json())
+  .then(r => {
+    notifUcapan.textContent="Terima kasih atas doanya 🤍";
+    notifUcapan.style.color="green";
+    namaUcapan.value=''; isiUcapan.value='';
+    loadUcapan();
+  })
+  .catch(err=>{
+    notifUcapan.textContent="Gagal mengirim ucapan 😢";
+    notifUcapan.style.color="red";
+  });
+}
+
+
+function openLightbox(el){
+  lightboxImg.src=el.src;
+  document.getElementById('lightbox').classList.add('active');
+}
+
+loadUcapan();
+</script>
+
+</body>
+</html>
