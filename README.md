@@ -1,6 +1,6 @@
 # undangan_pernikahan
 
-npm install -g vercel
-vercel login
-masukan kode ke vercel.com/device 
-vercel --prod
+# 1. npm install -g vercel
+# 2. vercel login
+# 3. masukan kode ke vercel.com/device 
+# 4. vercel --prod
