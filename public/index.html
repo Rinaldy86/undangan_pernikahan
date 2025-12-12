@@ -25,27 +25,64 @@ body{
   color:#fff;
   text-align:center;
 }
-
 /* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:40px 20px;
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+
+  /* gambar + overlay */
   background:
-    linear-gradient(rgba(15,23,42,.7),rgba(15,23,42,.9)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600') center/cover;
+    linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
+    url('/images/img_01.png');
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
 }
 
-.hero h4{letter-spacing:3px;font-weight:400;color:var(--gold)}
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:48px;
-  margin:10px 0;
+/* Desktop (crop 10% bawah + parallax) */
+@media (min-width: 768px) {
+  .hero {
+    background-size: 100% 110%;   /* Crop 10% bawah */
+    background-position: top center;
+    background-attachment: fixed; /* Parallax hanya di desktop */
+  }
 }
-.hero p{max-width:600px;color:#e5e7eb}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hero {
+    background-size: cover;      /* full fit */
+    background-position: center; /* fokus gambar */
+    background-attachment: scroll; /* Hindari bug HP */
+  }
+}
+
+
+/* TEXT */
+.hero h4 {
+  letter-spacing: 3px;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 6vw, 48px); /* 🔥 Auto-resize judul */
+  margin: 10px 0;
+}
+
+.hero p {
+  max-width: 600px;
+  color: #e5e7eb;
+  font-size: clamp(14px, 3vw, 18px); /* 🔥 Auto-resize paragraf */
+  text-align: center;
+}
 
 .divider{
   width:120px;height:1px;background:var(--gold);margin:20px auto
@@ -95,7 +132,7 @@ h2{
   background:linear-gradient(180deg,#fff,#faf7f2);
   box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
-.card.dark{background:#1f2937;color:#fff}
+.card.dark{background:#1f2937;color: #fff !important;}
 
 /* UCAPAN */
 .ucapan-item{
@@ -152,29 +189,70 @@ footer{
   background:#0f172a;
   color:#9ca3af
 }
+
+.map-responsive {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%; /* tinggi otomatis */
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.map-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 18px;
+}
+
 </style>
 </head>
 
 <body>
-
+<audio id="bgMusic" src="/sound/lagu_awal.mp3" preload="auto" loop></audio>
 <div class="hero">
   <h4>THE WEDDING OF</h4>
-  <h1>Nama Wanita & Nama Pria</h1>
-  <p id="namaTamu" style="margin-top:10px;font-size:20px;color:var(--gold)"></p>
+  <h1>Della & Iqbal</h1>  
+  <p style="margin:10px 0 0 0; padding:0;">Kpd Bpk/Ibu/Saudara/i</p>
+  <p id="namaTamu" style="margin:2px 0 0 0; font-size:20px; color:var(--gold); padding:0;"></p>
   <div class="divider"></div>
   <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Anda untuk hadir di hari bahagia kami</p>
-  <button class="btn" onclick="document.getElementById('acara').scrollIntoView({behavior:'smooth'})">
+  <button class="btn" onclick="startMusic(); document.getElementById('acara').scrollIntoView({behavior:'smooth'})">
     Buka Undangan
   </button>
 </div>
 
 <section id="acara">
   <h2>Save The Date</h2>
-  <p>Sabtu, 18 Januari 2026</p>
+  <p>Sabtu, 18 Desember 2025</p>
   <div class="card">
-    <h3>Akad Nikah</h3><p>09.00 WIB</p>
-    <h3>Resepsi</h3><p>11.00 WIB - Selesai</p>
-    <p>Gedung Serbaguna Contoh<br>Kota Contoh</p>
+    <h3>Akad Nikah</h3><p>10.00 WITA</p>
+    <p>KUA Bontang Utara</p>
+    <h3>Resepsi</h3><p>12.00 - 14.00 WITA</p>
+    <p>Rumah Pengantin Wanita<br>Jl. Parikesit RT.018, Kel. Botang Baru Kec. Bontang Utara, Samping Scotties Pizza</p>
+  </div>
+</section>
+
+<section>
+  <h2>Lokasi Acara</h2>
+  <div class="card">
+
+    <div class="map-responsive">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d430.5983379467015!2d117.49285718820842!3d0.13609183784627338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMMKwMDgnMTAuMSJOIDExN8KwMjknMzUuMiJF!5e1!3m2!1sid!2sid!4v1765539703078!5m2!1sid!2sid"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <br>
+    <a href="https://maps.app.goo.gl/88kB65uTaa1FVTdN7" target="_blank">
+      <button class="btn">Buka di Google Maps</button>
+    </a>
   </div>
 </section>
 
@@ -190,27 +268,28 @@ footer{
 </div>
 </section>
 
-<section class="dark">
+<section>
   <h2>Amplop Digital</h2>
   <div class="card dark">
-    <p><strong>BCA</strong><br>1234567890<br>a.n Nama</p>
+    <p><strong>BNI</strong><br>1258747019 <br>a.n Rinaldy Iqbal</p>
   </div>
   <div class="card dark">
-    <p><strong>BCA</strong><br>1234567890<br>a.n Nama</p>
+    <p><strong>BCA</strong><br>1234567890<br>a.n Della Dwinov Puspita Ramadana</p>
   </div>
 </section>
 
 <section>
-<h2>Gallery Foto</h2>
-<p>Momen indah kami</p>
-<div class="card">
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?q=80&w=600" onclick="openLightbox(this)">
-    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600" onclick="openLightbox(this)">
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=600" onclick="openLightbox(this)">
-    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600" onclick="openLightbox(this)">
+  <h2>Gallery Foto</h2>
+  <div class="card">
+    <div class="gallery">
+      <img src="/images/img_02.png" onclick="openLightbox(this)">
+      <img src="/images/img_03.png" onclick="openLightbox(this)">
+      <img src="/images/img_04.png" onclick="openLightbox(this)">
+      <img src="/images/img_05.png" onclick="openLightbox(this)">
+      <img src="/images/img_06.png" onclick="openLightbox(this)">
+      <img src="/images/img_07.png" onclick="openLightbox(this)">
+    </div>
   </div>
-</div>
 </section>
 
 <div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
@@ -219,7 +298,7 @@ footer{
 
 <footer>
 <p>Terima kasih atas doa dan kehadiran Anda</p>
-<p>© 2026 Nama Wanita & Nama Pria</p>
+<p>© 2025 Della & Iqbal</p>
 </footer>
 
 <script>
@@ -295,6 +374,11 @@ if(namaTamuUrl){
   document.getElementById('namaTamu').textContent = `${decodeURIComponent(namaTamuUrl)}`;
   // Isi otomatis input ucapan
   document.getElementById('namaUcapan').value = decodeURIComponent(namaTamuUrl);
+}
+
+function startMusic() {
+  const bgMusic = document.getElementById('bgMusic');
+  bgMusic.play().catch(()=>{});
 }
 
 loadUcapan();
