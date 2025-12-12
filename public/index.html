@@ -207,6 +207,10 @@ footer{
   border: 0;
   border-radius: 18px;
 }
+.body-locked {
+  height: 100vh;
+  overflow: hidden;
+}
 
 </style>
 </head>
@@ -220,14 +224,17 @@ footer{
   <p id="namaTamu" style="margin:2px 0 0 0; font-size:20px; color:var(--gold); padding:0;"></p>
   <div class="divider"></div>
   <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Anda untuk hadir di hari bahagia kami</p>
-  <button class="btn" onclick="startMusic(); document.getElementById('acara').scrollIntoView({behavior:'smooth'})">
+  <!-- <button class="btn" onclick="startMusic(); document.getElementById('acara').scrollIntoView({behavior:'smooth'})">
+    Buka Undangan
+  </button> -->
+  <button class="btn" onclick="bukaUndangan()">
     Buka Undangan
   </button>
 </div>
 
 <section id="acara">
   <h2>Save The Date</h2>
-  <p>Sabtu, 18 Desember 2025</p>
+  <p>Kamis, 18 Desember 2025</p>
   <div class="card">
     <h3>Akad Nikah</h3><p>10.00 WITA</p>
     <p>KUA Bontang Utara</p>
@@ -380,6 +387,16 @@ function startMusic() {
   const bgMusic = document.getElementById('bgMusic');
   bgMusic.play().catch(()=>{});
 }
+
+// Kunci scroll saat pertama kali masuk
+document.body.classList.add('body-locked');
+
+function bukaUndangan() {
+  startMusic();
+  document.body.classList.remove('body-locked'); // buka scroll
+  document.getElementById('acara').scrollIntoView({behavior:'smooth'});
+}
+
 
 loadUcapan();
 </script>
