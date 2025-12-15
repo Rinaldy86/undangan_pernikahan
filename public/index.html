@@ -294,7 +294,7 @@ footer{
       <img src="/images/img_04.png" onclick="openLightbox(this)">
       <img src="/images/img_05.png" onclick="openLightbox(this)">
       <img src="/images/img_06.png" onclick="openLightbox(this)">
-      <img src="/images/img_07.png" onclick="openLightbox(this)">
+      <img src="/images/img_08.png" onclick="openLightbox(this)">
     </div>
   </div>
 </section>
@@ -334,7 +334,7 @@ function loadUcapan(){
           <div class="avatar" style="background:${avatarColor(u.nama)}">${u.nama[0].toUpperCase()}</div>
           <div class="ucapan-box">
             <strong>${u.nama}</strong><br>
-            <small>${u.waktu}</small>
+            <small>${formatTanggalIndo(u.waktu)}</small>
             <p>${u.ucapan}</p>
           </div>
         </div>`;
@@ -397,6 +397,30 @@ function bukaUndangan() {
   document.getElementById('acara').scrollIntoView({behavior:'smooth'});
 }
 
+function formatTanggalIndo(isoString){
+  if(!isoString) return '';
+
+  const date = new Date(isoString);
+
+  const namaBulan = [
+    'Januari','Februari','Maret','April','Mei','Juni',
+    'Juli','Agustus','September','Oktober','November','Desember'
+  ];
+
+  // ⬇️ PAKAI UTC (bukan lokal)
+  const hari = String(date.getUTCDate()).padStart(2,'0');
+  const bulan = namaBulan[date.getUTCMonth()];
+  const tahun = date.getUTCFullYear();
+
+  // ⬇️ TAMBAH OFFSET MANUAL WITA
+  let jam = date.getUTCHours() + 8;
+  if (jam >= 24) jam -= 24;
+
+  const menit = String(date.getUTCMinutes()).padStart(2,'0');
+  const detik = String(date.getUTCSeconds()).padStart(2,'0');
+
+  return `${hari} ${bulan} ${tahun} • ${String(jam).padStart(2,'0')}:${menit}:${detik}`;
+}
 
 loadUcapan();
 </script>
