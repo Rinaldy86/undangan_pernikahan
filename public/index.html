@@ -212,6 +212,8 @@ footer{
   overflow: hidden;
 }
 
+/* BIODATA PENGANTIN */ .biodata-wrap{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; max-width:900px; /* margin:20px auto 0; */ } .biodata-card{ text-align:center; } .frame{ position:relative; width:220px; height:280px; margin:0 auto 18px; border-radius:120px 120px 20px 20px; background: linear-gradient(135deg, #c9a24d, #e8d18a); padding:6px; } .frame::after{ content:''; position:absolute; inset:12px; border:1px solid rgba(255,255,255,.6); border-radius:110px 110px 16px 16px; pointer-events:none; } .frame img{ width:100%; height:100%; object-fit:cover; border-radius:110px 110px 16px 16px; background:#eee; } .biodata-card h3{ font-family:'Playfair Display',serif; font-size:22px; /* margin:10px 0 4px; */ color:#1f2937; } .biodata-card p{ margin:0; font-size:14px; color:#6b7280; }
+
 </style>
 </head>
 
@@ -232,7 +234,9 @@ footer{
   </button>
 </div>
 
-<section id="acara">
+<section id="acara"> <h2>Pengantin</h2> <p>Dengan penuh rasa syukur kami perkenalkan</p> <div class="biodata-wrap"> <div class="biodata-card"> <div class="frame"> <img src="/images/della.png" alt="Pengantin Wanita"> </div> <h3>Della Dwinov Puspita Ramadana</h3> <p>Putri Ke-2 dari Ibu Reyna Febrianty Malla</p> </div> <div class="biodata-card"> <div class="frame"> <img src="/images/iqbal.png" alt="Pengantin Pria"> </div> <h3>Rinaldy Iqbal</h3> <p>Putra Ke-4 dari Bpk. Murjanie (Alm)<br>Ibu Hayati (Alm)</p> </div> </div> </section>
+
+<section>
   <h2>Save The Date</h2>
   <p>Kamis, 18 Desember 2025</p>
   <div class="card">
